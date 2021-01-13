@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="TheBarber.Views.TitleViews.PrincipalTitleView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <FlexLayout
+            Margin="-10,0,10,0"
+            Padding="0"
+            JustifyContent="SpaceBetween"
+            VerticalOptions="Center">
+            <Image Source="menu.png" />
+            <Image HeightRequest="40" Source="Logo.png" />
+            <Image Source="avatar.png" />
+        </FlexLayout>
+    </ContentView.Content>
+</ContentView>

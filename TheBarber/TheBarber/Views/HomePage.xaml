@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TheBarber.Views.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="*,auto">
+        <Image
+            Grid.Row="0"
+            Aspect="Fill"
+            Source="bg_image" />
+        <Image
+            Margin="0,-40,0,0"
+            HorizontalOptions="Center"
+            Source="Logo" />
+
+        <pancake:PancakeView
+            Grid.Row="1"
+            Margin="0,-30,0,0"
+            BackgroundColor="White"
+            CornerRadius="30,30,0,0"
+            VerticalOptions="EndAndExpand">
+            <StackLayout Spacing="20">
+                <Label
+                    Margin="0,20,0,0"
+                    FontFamily="GoogleSans"
+                    FontSize="Body"
+                    HorizontalOptions="Center"
+                    Text="Find the best barber in the area" />
+
+                <Button
+                    Padding="70,0"
+                    BackgroundColor="Black"
+                    Command="{Binding MainCommand, Mode=OneTime}"
+                    CornerRadius="20"
+                    FontFamily="Fertigo"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Let's go"
+                    TextColor="White" />
+
+                <Label
+                    Margin="0,0,0,0"
+                    FontFamily="GoogleSans"
+                    FontSize="Body"
+                    HorizontalOptions="Center"
+                    Text="I don't have account" />
+
+                <BoxView
+                    Margin="0,0,0,10"
+                    BackgroundColor="Black"
+                    CornerRadius="2"
+                    HeightRequest="5"
+                    HorizontalOptions="CenterAndExpand"
+                    WidthRequest="134" />
+
+            </StackLayout>
+        </pancake:PancakeView>
+
+    </Grid>
+
+</ContentPage>

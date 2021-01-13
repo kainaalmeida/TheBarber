@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TheBarber.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+    xmlns:titleView="clr-namespace:TheBarber.Views.TitleViews"
+    Title="{Binding Title}"
+    sharedTransitions:SharedTransitionNavigationPage.BackgroundAnimation="Fade"
+    sharedTransitions:SharedTransitionNavigationPage.TransitionDuration="500"
+    sharedTransitions:SharedTransitionNavigationPage.TransitionSelectedGroup="{Binding SelectedBarberId}"
+    BackgroundColor="#272525"
+    NavigationPage.HasBackButton="False">
+
+    <NavigationPage.TitleView>
+        <titleView:PrincipalTitleView />
+    </NavigationPage.TitleView>
+
+
+    <ScrollView>
+        <Grid ColumnDefinitions="*,*" RowDefinitions="auto,500,auto,500">
+
+            <Label
+                Grid.Row="0"
+                Margin="15,10,0,0"
+                FontFamily="Fertigo"
+                FontSize="Title"
+                Text="The best"
+                TextColor="White" />
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="0,10,15,0"
+                FontFamily="GoogleSans"
+                FontSize="Body"
+                HorizontalOptions="End"
+                Text="Show all"
+                TextColor="White"
+                VerticalOptions="End" />
+
+
+            <CollectionView
+                x:Name="barbersCollection"
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="{OnPlatform Android='10,15,0,20',
+                                    iOS='10,15,0,20'}"
+                ItemsSource="{Binding Barbers}"
+                SelectionChanged="CollectionView_SelectionChanged"
+                SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            Padding="0"
+                            ColumnDefinitions="auto,auto"
+                            RowDefinitions="auto,auto,auto"
+                            RowSpacing="0">
+                            <Image
+                                Grid.ColumnSpan="2"
+                                sharedTransitions:Transition.Group="{Binding Id}"
+                                sharedTransitions:Transition.Name="SelectedImage"
+                                Aspect="AspectFill"
+                                Source="{Binding Img}" />
+                            <Image
+                                Grid.ColumnSpan="2"
+                                Margin="8,0,8,-4"
+                                Aspect="AspectFill"
+                                Source="fade"
+                                VerticalOptions="End" />
+
+                            <StackLayout
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0,25,0,0"
+                                Orientation="Horizontal"
+                                VerticalOptions="Start">
+                                <Label
+                                    FontFamily="GoogleSans"
+                                    FontSize="Title"
+                                    Text="{Binding Note}"
+                                    TextColor="White" />
+                                <Image
+                                    Margin="10,2,20,0"
+                                    Source="star"
+                                    VerticalOptions="Start" />
+                            </StackLayout>
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Margin="20,-80,0,0"
+                                FontFamily="Fertigo"
+                                FontSize="34"
+                                Text="{Binding Name}"
+                                TextColor="White" />
+
+                            <StackLayout
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Margin="20,-35,0,0"
+                                Orientation="Horizontal">
+                                <Label
+                                    FontFamily="GoogleSans"
+                                    FontSize="Body"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="{Binding Location}"
+                                    TextColor="White" />
+                                <Image
+                                    Margin="10,2,20,0"
+                                    HorizontalOptions="End"
+                                    Source="plus"
+                                    VerticalOptions="Start" />
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+            <Label
+                Grid.Row="2"
+                Margin="15,0,0,0"
+                FontFamily="Fertigo"
+                FontSize="18"
+                Text="Nearest Barbershop"
+                TextColor="White" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="0,0,15,0"
+                FontFamily="GoogleSans"
+                FontSize="Default"
+                HorizontalOptions="End"
+                Text="Show all"
+                TextColor="White"
+                VerticalOptions="End" />
+
+            <CollectionView
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                Margin="15,20"
+                ItemsSource="{Binding BarberShops}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        HorizontalItemSpacing="10"
+                        Orientation="Vertical"
+                        Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="auto,auto,auto">
+                            <Frame
+                                Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                Padding="0"
+                                BackgroundColor="Transparent"
+                                CornerRadius="5"
+                                HasShadow="False"
+                                IsClippedToBounds="True">
+                                <Grid
+                                    Padding="0"
+                                    ColumnSpacing="0"
+                                    RowSpacing="0">
+                                    <Image Aspect="AspectFill" Source="{Binding Img}" />
+                                    <Image
+                                        Margin="0,0,0,-3"
+                                        Source="fade"
+                                        VerticalOptions="End" />
+                                    <Image
+                                        Margin="0,0,10,10"
+                                        HeightRequest="24"
+                                        HorizontalOptions="End"
+                                        Source="plus"
+                                        VerticalOptions="End"
+                                        WidthRequest="24" />
+                                </Grid>
+                            </Frame>
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                FontFamily="Fertigo"
+                                FontSize="18"
+                                Text="{Binding Name}"
+                                TextColor="White" />
+
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontFamily="GoogleSans"
+                                FontSize="Caption"
+                                Text="{Binding Location}"
+                                TextColor="White" />
+
+                            <StackLayout
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Margin="0,0,0,20"
+                                HorizontalOptions="End"
+                                Orientation="Horizontal"
+                                VerticalOptions="Start">
+                                <Label
+                                    FontFamily="GoogleSans"
+                                    FontSize="Caption"
+                                    Text="{Binding Note}"
+                                    TextColor="White" />
+                                <Image
+                                    Margin="0,-2,0,0"
+                                    HeightRequest="16"
+                                    Source="star"
+                                    VerticalOptions="Start" />
+                            </StackLayout>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
+</ContentPage>

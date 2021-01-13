@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TheBarber.Views.DetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+    iOS:Page.UseSafeArea="True"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="#232222"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="*,auto">
+        <Image
+            Grid.RowSpan="2"
+            Margin="-15,-10,0,-15"
+            Aspect="AspectFill"
+            Source="{Binding Barber.Img}" />
+
+        <Image
+            Grid.RowSpan="2"
+            Margin="0,20,10,0"
+            HorizontalOptions="End"
+            Source="close"
+            VerticalOptions="Start">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseCommand}" NumberOfTapsRequired="1" />
+            </Image.GestureRecognizers>
+        </Image>
+
+        <pancake:PancakeView
+            x:Name="detail"
+            Grid.Row="1"
+            Margin="0,0,0,0"
+            BackgroundColor="White"
+            CornerRadius="30,30,0,0"
+            HeightRequest="230"
+            VerticalOptions="End">
+            <pancake:PancakeView.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated" TouchPoints="1" />
+            </pancake:PancakeView.GestureRecognizers>
+            <Grid
+                Margin="20,20,20,0"
+                ColumnDefinitions="auto,auto,auto,*"
+                ColumnSpacing="20"
+                RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
+                RowSpacing="10">
+                <BoxView
+                    Grid.ColumnSpan="4"
+                    Margin="0,0,0,10"
+                    BackgroundColor="Black"
+                    CornerRadius="2"
+                    HeightRequest="5"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Start"
+                    WidthRequest="134" />
+
+
+                <Image
+                    Grid.Row="1"
+                    sharedTransitions:Transition.Name="SelectedImage"
+                    Aspect="Fill"
+                    HeightRequest="64"
+                    Source="{Binding Barber.Img}"
+                    WidthRequest="64">
+                    <Image.Clip>
+                        <EllipseGeometry
+                            Center="32,32"
+                            RadiusX="32"
+                            RadiusY="32" />
+                    </Image.Clip>
+                </Image>
+
+                <StackLayout Grid.Row="1" Grid.Column="1">
+                    <Label
+                        FontFamily="Fertigo"
+                        FontSize="24"
+                        Text="{Binding Barber.Name}"
+                        TextColor="#272525" />
+                    <Label
+                        FontFamily="GoogleSans"
+                        FontSize="Caption"
+                        Opacity=".5"
+                        Text="{Binding Barber.Location}"
+                        TextColor="#272525" />
+                </StackLayout>
+
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Padding="8,5"
+                    BackgroundColor="#272525"
+                    CornerRadius="5"
+                    VerticalOptions="Start">
+                    <StackLayout Orientation="Horizontal" WidthRequest="40">
+                        <Image
+                            Margin="0,-2,0,0"
+                            HeightRequest="12"
+                            Source="star"
+                            VerticalOptions="Center" />
+                        <Label
+                            FontFamily="GoogleSans"
+                            FontSize="Caption"
+                            Text="{Binding Barber.Note}"
+                            TextColor="White" />
+                    </StackLayout>
+                </Frame>
+
+                <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    HorizontalOptions="End"
+                    Orientation="Horizontal"
+                    Spacing="0">
+                    <Label
+                        FontFamily="Fertigo"
+                        FontSize="34"
+                        Text="25"
+                        TextColor="#272525" />
+                    <Label
+                        FontFamily="Fertigo"
+                        FontSize="20"
+                        Text="Dt"
+                        TextColor="#272525" />
+                </StackLayout>
+
+                <BoxView
+                    Grid.Row="2"
+                    Grid.ColumnSpan="4"
+                    HeightRequest="1"
+                    Color="#707070" />
+
+                <StackLayout
+                    Grid.Row="3"
+                    Grid.ColumnSpan="4"
+                    Orientation="Horizontal">
+                    <Label
+                        FontFamily="Fertigo"
+                        FontSize="18"
+                        HorizontalOptions="FillAndExpand"
+                        Text="About me" />
+                    <Image Source="plus_black" VerticalOptions="Start" />
+                </StackLayout>
+
+                <Label
+                    Grid.Row="4"
+                    Grid.ColumnSpan="4"
+                    FontFamily="GoogleSans"
+                    FontSize="Default"
+                    Text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et." />
+
+                <Grid
+                    Grid.Row="5"
+                    Grid.ColumnSpan="4"
+                    ColumnDefinitions="auto,auto"
+                    HorizontalOptions="Center"
+                    RowDefinitions="auto,auto">
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Source="img_01" />
+
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Source="img_02" />
+
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Source="img_03" />
+
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Source="img_04" />
+                </Grid>
+
+                <Button
+                    Grid.Row="6"
+                    Grid.ColumnSpan="4"
+                    Margin="{OnPlatform Android='0,10,0,0',
+                                        iOS='0,10,0,20'}"
+                    Padding="70,0"
+                    BackgroundColor="Black"
+                    CornerRadius="20"
+                    FontFamily="Fertigo"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Book appoiment"
+                    TextColor="White" />
+
+            </Grid>
+        </pancake:PancakeView>
+    </Grid>
+
+</ContentPage>
