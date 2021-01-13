@@ -13,7 +13,7 @@ namespace TheBarber.iOS.Interfaces
             Device.BeginInvokeOnMainThread(() =>
             {
                 var currentUIViewController = GetCurrentViewController();
-                UIApplication.SharedApplication.SetStatusBarStyle(darkContent ? UIStatusBarStyle.LightContent : UIStatusBarStyle.DarkContent, false);
+                UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, false);
                 currentUIViewController.SetNeedsStatusBarAppearanceUpdate();
             });
         }
