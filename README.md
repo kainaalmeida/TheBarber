@@ -43,3 +43,16 @@
     </tr>
   </tbody>
  </table>
+ 
+ ## GIF
+ <table>
+  <thead>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://github.com/kainaalmeida/TheBarber/blob/master/images/thebarber.gif"/></td>
+    </tr>
+  </tbody>
+ </table>
+
