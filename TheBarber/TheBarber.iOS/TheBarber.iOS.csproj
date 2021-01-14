@@ -215,7 +215,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TheBarber\TheBarber.csproj">
-      <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
+      <Project>{67DD606B-828E-4987-BCB6-FD79FC188ABE}</Project>
       <Name>TheBarber</Name>
     </ProjectReference>
   </ItemGroup>
