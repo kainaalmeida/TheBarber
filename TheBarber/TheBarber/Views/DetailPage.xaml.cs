@@ -15,7 +15,6 @@ namespace TheBarber.Views
         public DetailPage()
         {
             InitializeComponent();
-            StatusBarEffect.SetBackgroundColor(Color.FromHex("232222"));
             this.Effects.Add(new StatusBarEffect());
         }
 
@@ -30,16 +29,16 @@ namespace TheBarber.Views
             detail.HeightRequest = height;
             oldY = y;
 
-            if (e.StatusType == GestureStatus.Completed || e.StatusType == GestureStatus.Canceled)
-            {
-                var toUpper = Math.Abs(maxPan - height);
-                var toBottom = Math.Abs(minPan - height);
+            //if (e.StatusType == GestureStatus.Completed || e.StatusType == GestureStatus.Canceled)
+            //{
+            //    var toUpper = Math.Abs(maxPan - height);
+            //    var toBottom = Math.Abs(minPan - height);
 
-                if (toUpper > toBottom)
-                    detail.HeightRequest = maxPan;
-                else
-                    detail.HeightRequest = minPan;
-            }
+            //    if (toUpper > toBottom)
+            //        detail.HeightRequest = maxPan;
+            //    else
+            //        detail.HeightRequest = minPan;
+            //}
         }
     }
 }
