@@ -1,6 +1,7 @@
 using Plugin.SharedTransitions;
 using Prism;
 using Prism.Ioc;
+using TheBarber.Interfaces;
 using TheBarber.ViewModels;
 using TheBarber.Views;
 using Xamarin.Essentials.Implementation;
@@ -21,6 +22,9 @@ namespace TheBarber
             InitializeComponent();
 
             await NavigationService.NavigateAsync($"{nameof(SharedTransitionNavigationPage)}/{nameof(HomePage)}");
+
+            if (Device.RuntimePlatform == Device.iOS)
+                Xamarin.Forms.DependencyService.Get<IStatusBarStyle>().ChangeTextColor();
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

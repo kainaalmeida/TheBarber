@@ -28,7 +28,6 @@ namespace TheBarber.ViewModels
             : base(navigationService)
         {
             Title = "Main Page";
-            StatusBarEffect.SetBackgroundColor(Color.FromHex("#232222"));
             SelectedItemCommand = new DelegateCommand<Barbers>(async (barber) => await ExecuteSelectedItemCommand(barber));
 
             LoadBarbers();

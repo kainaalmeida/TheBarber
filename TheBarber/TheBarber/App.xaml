@@ -3,12 +3,22 @@
     x:Class="TheBarber.App"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:prism="http://prismlibrary.com">
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:sharedTransition="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions">
     <Application.Resources>
         <ResourceDictionary>
             <Style TargetType="NavigationPage">
                 <Setter Property="BarTextColor" Value="White" />
                 <Setter Property="BarBackgroundColor" Value="#232222" />
+            </Style>
+            <Style TargetType="sharedTransition:SharedTransitionNavigationPage">
+                <Setter Property="BarBackgroundColor" Value="#232222" />
+            </Style>
+            <Style ApplyToDerivedTypes="True" TargetType="ContentView">
+                <Setter Property="BackgroundColor" Value="#232222" />
+            </Style>
+            <Style ApplyToDerivedTypes="True" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="#232222" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>
